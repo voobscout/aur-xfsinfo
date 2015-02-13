@@ -9,21 +9,21 @@ makedepends=('git' 'pkg-config' 'autoconf' 'automake' 'gettext' 'xproto' 'xtrans
 url="http://xorg.freedesktop.org/archive/individual/app"
 provides=('xorg-xfs-xfsinfo')
 optdepends=('xorg-xfs' 'xorg-xfstt')
-source=("http://xorg.freedesktop.org/archive/individual/app/xfsinfo-1.0.5.tar.gz")
+source=("http://xorg.freedesktop.org/archive/individual/app/xfsinfo-$pkgver.tar.gz")
 sha256sums=('56a0492ed2cde272dc8f4cff4ba0970ccb900e51c10bb8ec62747483d095fd69')
 options=(!strip)
 
 build() {
-  cd ${srcdir}/xfsinfo-1.0.5
-  msg "Configuring fslsfonts..."
+  cd ${srcdir}/xfsinfo-${pkgver}
+  msg "Configuring xfsinfo..."
   ./configure --prefix=/usr
-  msg "Compiling XFS... "
+  msg "Compiling xfsinfo... "
   make
 }
 
 package() {
-  msg "Installing fslsfonts"
-  cd ${srcdir}/xfsinfo-1.0.5
+  msg "Installing xfsinfo"
+  cd ${srcdir}/xfsinfo-${pkgver}
   make DESTDIR=${pkgdir} install
 }
 # vim:set ts=2 sw=2 et:
